@@ -1,0 +1,62 @@
+/* --- Alan Maulana --- */
+ /* --- 1197070009 --- */
+
+Program 1 : mengakses Digital Output sensor
+
+//Mendeteksi hujan dengan indikator LED secara sederhana
+ 
+const int sensor_hujan = 12;
+const int LED = 13;
+ 
+void setup () {
+pinMode (sensor_hujan, INPUT);
+pinMode (LED, OUTPUT); }
+ 
+void loop() {
+int kondisi_sensor = digitalRead(sensor_hujan);
+if (kondisi_sensor == LOW)
+digitalWrite(LED, HIGH);
+else digitalWrite(LED, LOW);
+delay (1000);
+}
+
+
+Program 2 : mengakses Output Analog sensor
+
+ 
+int Led=13; 
+int OutputDO=12; 
+int OutputAO=A0;
+ 
+int val;
+float sensor; 
+ 
+void setup()
+{
+pinMode (Led, OUTPUT) ; 
+pinMode (OutputDO, INPUT) ; 
+pinMode (OutputAO, INPUT) ; 
+
+Serial.begin(9600);
+}
+ 
+void loop()
+{
+sensor = analogRead(OutputAO);
+Serial.println(sensor); 
+ 
+
+val = digitalRead (OutputDO);
+//Pengondisian
+if (val == LOW) 
+{
+
+digitalWrite (Led, HIGH);
+}
+else
+{
+
+digitalWrite (Led, LOW);
+}
+delay(1000); 
+}
